@@ -11,7 +11,7 @@
     min-width: 922px;
     display: flex;
     flex-direction: row;
-    background-image: url('img/weather-bg-rain.jpg') ;
+    background-image: url('/img/weather-bg-rain.jpg') ;
     background-repeat: no-repeat;
     background-size: cover;
 }
