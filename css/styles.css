@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -7,25 +6,27 @@
     font-family: Fredoka;
 }
 body {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     /* min-width: 992px; */
 }
 .container {
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: row;
     background-image: url('../img/weather-bg-rain.jpg') ;
     background-repeat: no-repeat;
     background-size: cover;
 
 }
+/* Main */
 .main {
-    flex: 1;
+    flex: 2;
 }
 .main-content {
-    margin: 8% 0% 30% 12%;
-    width: 85%;
+    margin: 8% 0% 12% 12%;
+    width: 80%;
     height: 80%;
     position: relative;
 }
@@ -33,12 +34,6 @@ body {
     font-size: 1.2em;
     /* font-family: 'Fredoka One'; */
     font-weight: bolder;
-}
-.menu-nav, .menu-cancel {
-    width: 2em;
-    position: absolute;
-    right: 0;
-    top: 0;
 }
 .weather-content {
     width: fit-content;
@@ -51,47 +46,50 @@ body {
 }
 .weather-degree {
     flex: 1;
-    font-size: 5em;
-    margin: 0 3% 0 0;
+    font-size: 10vw;
+    margin: 0 5% 0 0;
 }
 .weather-data {
     flex: 2.5;
-    padding: 3% 0;
-    margin: 0 3% 0 0;
+    padding: 5% 0;
+    margin: 0 5% 0 0;
 }
 .weather-location {
-    font-size: 3em;
+    font-size: 5vw;
 }
 .weather-date-time, .weather-condition {
-    font-size: .8em;
+    font-size: 1.5vw;
 }
 .weather-icon {
-    width: 2em;
+    width: 3vw;
 }
 .weather-desc {
     flex: .5;
     margin: 0 5% 0 0;
-    padding: 9.5% 0;
+    padding: 12% 0;
 }
 .weather-condition {
     padding: 18.9% 0;
 }
 
+/* Side bar */
+
 .sidebar {
-    width: 70%;
-    background-color: rgba(0, 0, 0, .8);
-    z-index: 1;
+    flex: 1;
+    background-color: rgba(0, 0, 0, .6);
 }
 .sidebar-content {
-    width: 90%;
-    height: 100%;
+    height: 95%;
     display: flex;
     flex-direction: column;
     padding: 0 0 0 10%;
     
 }
 .sidebar-main-content {
+    /* flex: 5; */
     padding: 0 10% 0 0;
+    display: flex;
+    flex-direction: column;
 }
 .search-section {
     /* flex: 2; */
@@ -100,7 +98,7 @@ body {
     height: 10%;
 }
 .search-section>input {
-    flex: 3;
+    flex: 5;
     height: 100%;
     background-color: rgba(0, 0, 0, 0);
     font-size: 1em;
@@ -108,14 +106,7 @@ body {
     border: none;
     border-bottom: 2px solid gray;
     margin: 0 1.5% 0 0;
-    padding-top: 5%;
-}
-input:focus {
-    outline: 0;
-}
-
-.search-icon {
-    width: 3em;
+    padding-top: 10%;
 }
 .search-section>button {
     flex: 1.2;
@@ -131,6 +122,10 @@ input:focus {
     /* background-color: rgb(243,243,245); */
 
 }
+.search-icon {
+    width: 3vh;
+}
+
 .relative-locations {
     flex: 4;
     padding: 8% 0;
@@ -140,7 +135,7 @@ input:focus {
 }
 .weather-section {
     flex: 5;
-    padding: 5vh 0 0 0;
+    padding: 5vh 0 0;
 }
 .weather-details {
     display: flex;
@@ -163,86 +158,4 @@ input:focus {
 .value > span {
     padding: 3vh 0;
     text-align: right;
-}
-
-.sidebar{
-    display: none;
-}
-.menu-cancel{
-    display: none;
-}
-
-/* Media query for tablet view */
-@media all and (min-width: 768px)and (max-width: 992px){
-    .container{
-        display: flex;
-    }
-    .main-content {
-        margin: 8% 0% 12% 12%;
-        width: 80%;
-        height: 80%;
-    }
-    .app-name {
-        font-size: 2em;
-    }
-    .menu-nav, .menu-cancel {
-        width: 3.5em;
-    }
-    .weather-degree {
-        font-size: 9em;
-    }
-    .weather-location {
-        font-size: 5em;
-    }
-    .weather-date-time, .weather-condition {
-        font-size: 1.5em;
-    }
-    .weather-icon {
-        width: 3.5em;
-    }
-    .weather-desc {
-        flex: .5;
-        margin: 0 5% 0 0;
-        padding: 9% 0;
-    }
-    .weather-condition {
-        padding: 18.9% 0;
-    }
-}
-/* Media query for desktop view */
-@media all and (min-width: 993px) {
-    .menu-nav {
-        display: none;
-    }
-    .sidebar {
-        display: block;
-        background-color: rgba(0, 0, 0, .6);
-        width: 30%;
-    }
-    .app-name {
-        font-size: 2em;
-    }
-    .menu-nav, .menu-cancel {
-        width: 3.5em;
-    }
-    .weather-degree {
-        font-size: 9em;
-    }
-    .weather-location {
-        font-size: 5em;
-    }
-    .weather-date-time, .weather-condition {
-        font-size: 1.5em;
-    }
-    .weather-icon {
-        width: 3.5em;
-    }
-    .weather-desc {
-        flex: .5;
-        margin: 0 5% 0 0;
-        padding: 9% 0;
-    }
-    .weather-condition {
-        padding: 18.5% 0;
-    }
 }
