@@ -24,10 +24,11 @@ body {
     flex: 1;
 }
 .main-content {
-    margin: 8% 0% 30% 12%;
+    margin: 15% 0% 30% 12%;
     width: 85%;
     height: 80%;
     position: relative;
+    /* z-index: -1; */
 }
 .app-name {
     font-size: 1.2em;
@@ -50,28 +51,33 @@ body {
     justify-content: space-between;
 }
 .weather-degree {
-    flex: 1;
-    font-size: 5em;
+    flex: 2;
+    font-size: 3em;
     margin: 0 3% 0 0;
 }
+
 .weather-data {
     flex: 2.5;
     padding: 3% 0;
     margin: 0 3% 0 0;
 }
 .weather-location {
-    font-size: 3em;
+    font-size: 2em;
+}
+.weather-location-country {
+    font-size: .3em;
+    color: rgba(234,235,235, 0.6);
 }
 .weather-date-time, .weather-condition {
     font-size: .8em;
 }
-.weather-icon {
+.weather-icon, .degree {
     width: 2em;
 }
 .weather-desc {
     flex: .5;
     margin: 0 5% 0 0;
-    padding: 9.5% 0;
+    padding: 5% 0;
 }
 .weather-condition {
     padding: 18.9% 0;
@@ -99,7 +105,7 @@ body {
     flex-direction: row;
     height: 10%;
 }
-.search-section>input {
+.search-section>input{
     flex: 3;
     height: 100%;
     background-color: rgba(0, 0, 0, 0);
@@ -114,10 +120,7 @@ input:focus {
     outline: 0;
 }
 
-.search-icon {
-    width: 3em;
-}
-.search-section>button {
+input.search-icon {
     flex: 1.2;
     margin: 0 0 0 1.5%;
     border: 0;
@@ -170,6 +173,8 @@ input:focus {
 }
 .menu-cancel{
     display: none;
+    padding: 15% 0;
+    width: 1.8em;
 }
 
 /* Media query for tablet view */
@@ -208,9 +213,15 @@ input:focus {
     .weather-condition {
         padding: 18.9% 0;
     }
+    .sidebar {
+        font-size: 1.5em;
+    }
 }
 /* Media query for desktop view */
 @media all and (min-width: 993px) {
+    .main-content{
+        margin: 8% 0% 30% 12%;
+    }
     .menu-nav {
         display: none;
     }

@@ -15,10 +15,19 @@
                     thee.weather
                 </div>
                 <div class="weather-content">
-                    <div class="weather-degree"> 08</div>
+                    <div class="weather-degree">
+                         <span class = "weather-degree-no">08</span>&#0176</div>
                     <div class="weather-data">
-                        <div class="weather-location">London</div>
-                        <div class="weather-date-time">06:09 - Sunday 6 Oct '19</div>
+                        <div class="weather-location">
+                            <div class="weather-location-region">
+                                London 
+                            </div>
+                           
+                            <div class="weather-location-country">
+                                United Kingdom
+                            </div>
+                        </div>
+                        <div class="weather-date-time">06:09 - Sunday 6 Oct '19 </div>
                        
                     </div>
                     <div class="weather-desc">
@@ -34,9 +43,11 @@
         </div>
         <div class="sidebar">
             <div class="sidebar-content">
-                <form action="" class="search-section" >
+                <!-- <img id="cancel" class="menu-cancel" src="icons/x.png" alt="cancel"> -->
+                <form action="/" class="search-section" id ="form" >
                     <input type="text"  name="location" id="search-location" placeholder="Another location" >
-                    <button disabled="disabled"><img src="icons/search.png" class="search-icon" alt="search"></button>
+                    <input type="submit" value="&#x1F50D" class="search-icon" alt="search">
+                    <!-- <button disabled="disabled"><img src="icons/search.png" class="search-icon" alt="search"></button> -->
                 </form>
                 <div class="sidebar-main-content">
                     <div class="relative-locations">
@@ -70,5 +81,7 @@
             </div>
         </div>
     </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

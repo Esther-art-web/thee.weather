@@ -1,0 +1,31 @@
+{
+  "name": "thee-weather",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Esther-art-web/thee.weather.git"
+  },
+  "author": "Esther Ibeh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Esther-art-web/thee.weather/issues"
+  },
+  "homepage": "https://github.com/Esther-art-web/thee.weather#readme",
+  "dependencies": {
+    "axios": "^0.26.0",
+    "date-and-time": "^2.3.0",
+    "express": "^4.17.3",
+    "nearby-cities": "^1.1.0",
+    "path": "^0.12.7",
+    "socket.io": "^4.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
