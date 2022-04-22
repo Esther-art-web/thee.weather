@@ -8,7 +8,7 @@ const date = require("date-and-time")
 const forecast = require("./utils/forecast")
 const searchGeoLocation = require("./utils/searchGeoLocation");
 const res = require("express/lib/response");
-const port = process.env.PORT || 3000;
+const port = process.env.PORT ||  3000;
 
 const app = express();
 const server = http.createServer(app);
@@ -36,17 +36,18 @@ const assignWeatherDetails = (response, cities) => {
     const pattern = date.compile("hh:mm - dddd D MMM 'YY")
     const date_time = date.format(new Date(), pattern);
     const temp_degree = res.current.temp_c;
-    const temp_text = res.current.condition.text
+    const temp_text = res.current.condition.text;
+    const weatherIcon = res.current.condition.icon;
     const {wind_kph, precip_mm, humidity, cloud} = res.current;
-    return  {name, region, country, date_time, temp_degree, temp_text, wind_kph, precip_mm, humidity, cloud, cities}
+    return  {name, region, country, date_time, temp_degree, temp_text, wind_kph, precip_mm, humidity, cloud, weatherIcon, cities}
 }
 io.on("connection", (socket) => {
-    
     console.log("New Websocket connection!");
     socket.on("currentPosition", ({long, lat}) => {
         const work = async() => {
             const response = await forecast(lat, long);
             const cities = nearbyCities({latitude: lat,longitude : long});
+            console.log(response);
             return {response, cities};
         }
         work().then(({response, cities}) => {
@@ -54,19 +55,20 @@ io.on("connection", (socket) => {
             socket.emit("displayWeatherDetails", 
              {...values})
         }).catch((err) => {
-            console.log(err);
+            console.log("Error", err);
         })
     }) 
     socket.on("searchWeatherLocation", async(value) => {
         const {longitude, latitude} = await searchGeoLocation(value);
-        const response = await forecast(latitude, longitude)
-        const values = assignWeatherDetails(response);
-        socket.emit("displayWeatherDetails", 
+        const response = await forecast(latitude, longitude);
+        const cities = nearbyCities({latitude,longitude});
+        const values = assignWeatherDetails(response, cities);
+        socket.emit("displayWeatherDetails",
              {...values})
     })
 })
 
 
 server.listen(port, () => {
-    console.log(`App is running on port ${port}`)
+    console.log(`App is running on port ${port}`);
 }) 

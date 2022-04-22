@@ -16,24 +16,20 @@
                 </div>
                 <div class="weather-content">
                     <div class="weather-degree">
-                         <span class = "weather-degree-no">08</span>&#0176</div>
+                         <span class = "weather-degree-no"></span></div>
                     <div class="weather-data">
                         <div class="weather-location">
-                            <div class="weather-location-region">
-                                London 
-                            </div>
-                           
-                            <div class="weather-location-country">
-                                United Kingdom
-                            </div>
+                            
+                            <div class="weather-location-region"><img src="icons/main-loader.svg" alt="loading"></div>
+                            <div class="weather-location-country"></div>
                         </div>
-                        <div class="weather-date-time">06:09 - Sunday 6 Oct '19 </div>
-                       
+                        <div class="weather-date-time"></div>
                     </div>
                     <div class="weather-desc">
-                        <div ><img class="weather-icon" src="icons/rain.png" alt="rain"></div>
-                        <div class="weather-condition">Rainy</div>
+                        <div ><img class="weather-icon" src="" alt="rain"></div>
+                        <div class="weather-condition"></div>
                     </div>
+                    <div id="error-mssg"></div>
                 </div>
                 <div class="nav-bar">
                     <img id="menu" class="menu-nav" src="icons/menu.png" alt="nav bar">
@@ -44,17 +40,17 @@
         <div class="sidebar">
             <div class="sidebar-content">
                 <!-- <img id="cancel" class="menu-cancel" src="icons/x.png" alt="cancel"> -->
-                <form action="/" class="search-section" id ="form" >
+                <form action="/" class="search-section" id ="form" aria-disabled="true" >
                     <input type="text"  name="location" id="search-location" placeholder="Another location" >
-                    <input type="submit" value="&#x1F50D" class="search-icon" alt="search">
+                    <input type="submit" value="&#x1F50D" class="search-icon" alt="search" tabindex="0" disabled>
                     <!-- <button disabled="disabled"><img src="icons/search.png" class="search-icon" alt="search"></button> -->
                 </form>
                 <div class="sidebar-main-content">
                     <div class="relative-locations">
-                        <div class="location-1">Birminghan</div>
-                        <div class="location-2">Manchester</div>
-                        <div class="location-3">New York</div>
-                        <div class="location-4">California</div>
+                        <div class="location location-1"><img src="icons/loader.svg" class="loading" alt="loading"></div>
+                        <div class="location location-2"><img src="icons/loader.svg" class="loading" alt="loading"></div>
+                        <div class="location location-3"><img src="icons/loader.svg" class="loading" alt="loading"></div>
+                        <div class="location location-4"><img src="icons/loader.svg" class="loading" alt="loading"></div>
                     </div>
                     <hr>
                     <div class="weather-section">
@@ -68,15 +64,16 @@
                                     <span class="condition-4">Rain</span>
                                 </div>
                                 <div class="value">
-                                    <span class="value-1">86%</span>
-                                    <span class="value-2">62%</span>
-                                    <span class="value-3">8km/hr</span>
-                                    <span class="value-4">8mm</span>
+                                    <span class="value-1"><img src="icons/loader.svg" class="loading" alt="loading"></span>
+                                    <span class="value-2"><img src="icons/loader.svg" class="loading" alt="loading"></span>
+                                    <span class="value-3"><img src="icons/loader.svg" class="loading" alt="loading"></span>
+                                    <span class="value-4"><img src="icons/loader.svg" class="loading" alt="loading"></span>
                                 </div>
                             <!-- </div> -->
                         </div>
                     </div>
                     <hr>
+                    <div class="owner">&copy Esther Ibeh</div>
                 </div>
             </div>
         </div>
