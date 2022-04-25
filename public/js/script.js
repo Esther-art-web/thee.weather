@@ -48,15 +48,19 @@ menuIcon.addEventListener('click', () => {
 
 closeIcon.addEventListener("click", () => toogleNavBarIcon());
 
-const geoLocation = () => {
-  navigator.geolocation.getCurrentPosition(showLocation);
-}
-
 const showLocation = (position) => {
     var long = position.coords.longitude;
     var lat = position.coords.latitude;
     socket.emit("currentPosition", {long, lat});
    
+}
+const geoLocation = () => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showLocation);
+  }else{
+      alert("Geolocation is not supported by browser");
+  }
+  
 }
 
 window.addEventListener('load', () => {
