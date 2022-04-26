@@ -117,20 +117,20 @@ submitForm.addEventListener('submit', (e) => {
 location1.addEventListener("click", (e) => {
     const location = e.target.innerText;
     socket.emit("searchWeatherLocation", location);
-
+    toogleNavBarIcon();
 });
 location2.addEventListener("click", (e) => {
     const location = e.target.innerText;
     socket.emit("searchWeatherLocation", location);
-
+    toogleNavBarIcon();
 });
 location3.addEventListener("click", (e) => {
     const location = e.target.innerText;
     socket.emit("searchWeatherLocation", location);
-
+    toogleNavBarIcon();
 });
 location4.addEventListener("click", (e) => {
     const location = e.target.innerText;
     socket.emit("searchWeatherLocation", location);
-
+    toogleNavBarIcon();
 });
