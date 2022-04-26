@@ -145,11 +145,11 @@ input.search-icon {
 }
 .relative-locations {
     flex: 4;
-    padding: 8% 0;
+    padding: 7% 0;
     color: rgb(172, 175, 175);
 }
 .location-1, .location-2, .location-3, .location-4 {
-    padding: 3vh 0;
+    padding: 2.45vh 0;
 }
 .weather-section {
     flex: 5;
@@ -237,7 +237,8 @@ input.search-icon {
 /* Media query for desktop view */
 @media all and (min-width: 993px) {
     .main-content{
-        margin: 8% 0% 30% 12%;
+        padding: 8% 0% 0% 12%;
+        margin: 0;
     }
     .menu-nav {
         display: none;
@@ -253,8 +254,11 @@ input.search-icon {
     .menu-nav, .menu-cancel {
         width: 3.5em;
     }
+    .weather-content{
+        padding: 8% 0% 0% 12%;
+    }
     .weather-degree {
-        font-size: 9em;
+        font-size: 8em;
     }
     .weather-location {
         font-size: 5em;
@@ -275,5 +279,6 @@ input.search-icon {
     }
     input.search-icon{
         background-color: rgb(102,107,157);
+        padding: .5em;
     }
 }
