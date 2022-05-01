@@ -43,6 +43,7 @@ body {
     z-index: 10000;
 }
 .weather-content {
+    width: 100%;
     width: fit-content;
     position: absolute;
     left: 0;
@@ -54,6 +55,7 @@ body {
 .weather-degree {
     flex: 2;
     font-size: 3em;
+    padding: 3% 0;
     margin: 0 3% 0 0;
 }
 
@@ -61,6 +63,7 @@ body {
     flex: 2.5;
     padding: 3% 0;
     margin: 0 3% 0 0;
+    position: relative;
 }
 .weather-location {
     font-size: 2em;
@@ -84,7 +87,6 @@ body {
 .weather-condition {
     padding: 18.9% 0;
 }
-
 .sidebar {
     width: 70%;
     /* background-color: rgba(231,140,147,0.1); */
@@ -177,6 +179,11 @@ input.search-icon {
     padding: 3vh 0;
     text-align: right;
 }
+#error-mssg {
+    display: none;
+    width: 100%;
+    font-size: 1em;
+}
 
 .sidebar{
     display: none;
@@ -216,7 +223,7 @@ input.search-icon {
         font-size: 5em;
     }
     .weather-date-time, .weather-condition {
-        font-size: 1.5em;
+        font-size: 1.4em;
     }
     .weather-icon {
         width: 3.5em;
@@ -230,6 +237,11 @@ input.search-icon {
         font-size: 1em;
         padding: 18.9% 0;
     }
+    #error-mssg {
+        width: 100%;
+        font-size: 2.5em;
+    }
+    
     .sidebar {
         font-size: 1.5em;
     }
@@ -252,7 +264,8 @@ input.search-icon {
         font-size: 2em;
     }
     .menu-nav, .menu-cancel {
-        width: 3.5em;
+        /* width: 3.5em; */
+        display: none;
     }
     .weather-content{
         padding: 8% 0% 0% 12%;
@@ -264,7 +277,7 @@ input.search-icon {
         font-size: 5em;
     }
     .weather-date-time, .weather-condition {
-        font-size: 1.5em;
+        font-size: 1.35em;
     }
     .weather-icon {
         width: 3.5em;
@@ -281,4 +294,9 @@ input.search-icon {
         background-color: rgb(102,107,157);
         padding: .5em;
     }
+    #error-mssg {
+        width: 100%;
+        font-size: 2.5em;
+    }
+    
 }

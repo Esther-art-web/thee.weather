@@ -47,7 +47,7 @@ io.on("connection", (socket) => {
         const work = async() => {
             const response = await forecast(lat, long);
             const cities = nearbyCities({latitude: lat,longitude : long});
-            console.log(response);
+            // console.log(response);
             return {response, cities};
         }
         work().then(({response, cities}) => {
@@ -59,12 +59,17 @@ io.on("connection", (socket) => {
         })
     }) 
     socket.on("searchWeatherLocation", async(value) => {
-        const {longitude, latitude} = await searchGeoLocation(value);
-        const response = await forecast(latitude, longitude);
-        const cities = nearbyCities({latitude,longitude});
-        const values = assignWeatherDetails(response, cities);
-        socket.emit("displayWeatherDetails",
-             {...values})
+        const {longitude, latitude, error} = await searchGeoLocation(value);
+        if (longitude && latitude) {
+            const response = await forecast(latitude, longitude);
+            const cities = nearbyCities({latitude,longitude});
+            const values = assignWeatherDetails(response, cities);
+            socket.emit("displayWeatherDetails",
+                 {...values});
+        }else {
+            socket.emit("errorMessage", error);
+        }
+       
     })
 })
 

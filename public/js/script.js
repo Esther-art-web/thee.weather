@@ -21,26 +21,45 @@ const location4 = document.querySelector(".location-4");
 const $searchWeather = document.querySelector("#search-location");
 const submitForm = document.querySelector("#form");
 const searchIcon = document.querySelector(".search-icon");
+const loadingSVG = document.querySelector(".loader");
 const errorMssg = document.querySelector("#error-mssg");
 
 var isNavBarOpen = false;
 var navBarClicks = 0;
 
 const toogleNavBarIcon = () => {
-    if (!isNavBarOpen) {
-        menuIcon.style.display = "none";
-        closeIcon.style.display = "block";
-        navBar.style.display = "block";
-        isNavBarOpen = true;
-        navBarClicks = 1;
-    }else {
-        menuIcon.style.display = "block";
-        closeIcon.style.display = "none";
-        navBar.style.display = "none";
-        isNavBarOpen = false;
+    if(screen.width < 993){
+        if (!isNavBarOpen) {
+            menuIcon.style.display = "none";
+            closeIcon.style.display = "block";
+            navBar.style.display = "block";
+            isNavBarOpen = true;
+            navBarClicks = 1;
+        }else {
+            menuIcon.style.display = "block";
+            closeIcon.style.display = "none";
+            navBar.style.display = "none";
+            isNavBarOpen = false;
+        }
     }
     
 } 
+const  clearWeatherContent = () => {
+    weatherIcon.style.display= "none";
+    weatherDegreeNo.textContent = ``;
+    weatherLocationRegion.textContent = ``;
+    weatherLocationCountry.textContent = `` ;
+    weatherCondition.textContent = ``;
+    weatherDateTime.textContent = ``;
+}
+
+const displayOnLocationClick = (e) => {
+    const location = e.target.innerText;
+    clearWeatherContent();
+    loadingSVG.style.display = "block";
+    socket.emit("searchWeatherLocation", location);
+    toogleNavBarIcon();
+}
 
 menuIcon.addEventListener('click', () => {
     toogleNavBarIcon();
@@ -68,6 +87,7 @@ window.addEventListener('load', () => {
     geoLocation();
     socket.on("displayWeatherDetails", ({...details}) => {
         weatherIcon.style.display= "block";
+        loadingSVG.style.display="none";
         weatherDegreeNo.textContent = `${details.temp_degree}\xB0`;
         weatherLocationRegion.textContent = details.name;
         weatherLocationCountry.textContent = `${details.region}, ${details.country}` ;
@@ -93,6 +113,8 @@ submitForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const location = $searchWeather.value.trim();
     $searchWeather.value = '';
+    clearWeatherContent();
+    loadingSVG.style.display = "block";
     if (location){
         socket.emit("searchWeatherLocation", location);
         if(screen.width < 993){
@@ -103,34 +125,32 @@ submitForm.addEventListener('submit', (e) => {
         }
     }
     else{
-        weatherIcon.style.display= "none";
-        weatherDegreeNo.textContent = ``;
-        weatherLocationRegion.textContent = ``;
-        weatherLocationCountry.textContent = `` ;
-        weatherCondition.textContent = ``;
-        weatherDateTime.textContent = ``;
+        clearWeatherContent();
         errorMssg.textContent = "Please enter a valid location";
-        errorMssg.style.fontSize= "3em";
+        
+        if(screen.width < 993){
+            menuIcon.style.display = "block";
+            closeIcon.style.display = "none";
+            navBar.style.display = "none";
+            isNavBarOpen = false;
+        }
     }
     
 });
 location1.addEventListener("click", (e) => {
-    const location = e.target.innerText;
-    socket.emit("searchWeatherLocation", location);
-    toogleNavBarIcon();
+    displayOnLocationClick(e);
 });
 location2.addEventListener("click", (e) => {
-    const location = e.target.innerText;
-    socket.emit("searchWeatherLocation", location);
-    toogleNavBarIcon();
+    displayOnLocationClick(e);
 });
 location3.addEventListener("click", (e) => {
-    const location = e.target.innerText;
-    socket.emit("searchWeatherLocation", location);
-    toogleNavBarIcon();
+    displayOnLocationClick(e);
 });
 location4.addEventListener("click", (e) => {
-    const location = e.target.innerText;
-    socket.emit("searchWeatherLocation", location);
-    toogleNavBarIcon();
+    displayOnLocationClick(e);
 });
+
+socket.on('errorMessage', (error) => {
+    clearWeatherContent();
+    errorMssg.textContent = error;
+})
